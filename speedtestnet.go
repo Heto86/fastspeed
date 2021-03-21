@@ -1,9 +1,9 @@
 package fastspeed
 
-// excellent library
+
 import (
 	"fmt"
-
+	 // excellent library
 	"github.com/kylegrantlucas/speedtest"
 	"github.com/kylegrantlucas/speedtest/http"
 )
