@@ -103,3 +103,47 @@ func TestAPISpeedTestNet_GetMeasurments(t *testing.T) {
 		}
 	}
 }
+
+func Benchmark_DownloadFastcom(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		var f FastCom
+		f = f.Init()
+		Download(f)
+	}
+}
+
+func Benchmark_UploadFastcom(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		var f FastCom
+		f = f.Init()
+		Upload(f)
+	}
+}
+
+func Benchmark_DownloadSpeedtestnet(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		var f SpeedTestNet
+		f = f.Init()
+		Download(f)
+	}
+}
+
+func Benchmark_UploadSpeedtestnet(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		var f SpeedTestNet
+		f = f.Init()
+		Download(f)
+	}
+}
+
+func BenchmarkFastcom_GetMeasurments(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		GetMeasurments(FastcomType)
+	}
+}
+
+func BenchmarkSpeedtestnet_GetMeasurments(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		GetMeasurments(SpeednetType)
+	}
+}
