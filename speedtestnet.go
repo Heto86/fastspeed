@@ -4,10 +4,12 @@ import (
 	"fmt"
 
 	"github.com/kylegrantlucas/speedtest"
+	"github.com/kylegrantlucas/speedtest/http"
 )
 
 type SpeedTestNet struct {
 	client *speedtest.Client
+	server http.Server
 }
 
 func (s SpeedTestNet) Init() SpeedTestNet {
@@ -16,29 +18,27 @@ func (s SpeedTestNet) Init() SpeedTestNet {
 		fmt.Printf("error creating client: %v", err)
 	}
 	s.client = client
-	return s
-}
 
-func (s SpeedTestNet) Download() float64 {
 	server, err := s.client.GetServer("")
 	if err != nil {
 		fmt.Printf("error getting server: %v", err)
 	}
-	dmbps, err := s.client.Download(server)
+	s.server = server
+	return s
+}
+
+func (s SpeedTestNet) Download() float64 {
+	dmbps, err := s.client.Download(s.server)
 	if err != nil {
-		fmt.Printf("error getting download: %v", err)
+		fmt.Printf("error download : %v", err)
 	}
 	return dmbps
 }
 
 func (s SpeedTestNet) Upload() float64 {
-	server, err := s.client.GetServer("")
+	dmbps, err := s.client.Upload(s.server)
 	if err != nil {
-		fmt.Printf("error getting download: %v", err)
-	}
-	dmbps, err := s.client.Upload(server)
-	if err != nil {
-		fmt.Printf("error getting server: %v", err)
+		fmt.Printf("error upload: %v", err)
 	}
 	return dmbps
 }
