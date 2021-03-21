@@ -5,7 +5,6 @@ import (
 	"os"
 	"regexp"
 	"testing"
-	//"github.com/Heto86/fastspeed"
 )
 
 func TestSpeedTestNet_Download(t *testing.T) {

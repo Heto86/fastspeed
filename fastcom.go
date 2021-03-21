@@ -20,7 +20,7 @@ func (f FastCom) measure(emit_json bool) float64 {
 	cfg := gofast.Settings{
 		MaxBytes: int64(0),
 		Timeout:  0,
-		Workers:  int(3),
+		Workers:  3,
 		Network:  5000000000,
 		EmitJSON: emit_json}
 	results := <-gf.Measure(cfg)
