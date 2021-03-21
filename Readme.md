@@ -20,7 +20,7 @@ func main() {
 ## Test
 
 ```sh
-go test fastspee_test.go -v
+go test fastspeed_test.go -v
 ```
 
 ## Benchmark
