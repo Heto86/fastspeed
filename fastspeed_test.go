@@ -5,15 +5,14 @@ import (
 	"os"
 	"regexp"
 	"testing"
-
-	"github.com/Heto86/fastspeed"
+	//"github.com/Heto86/fastspeed"
 )
 
 func TestSpeedTestNet_Download(t *testing.T) {
 	t.Logf("testing speedtest.net download")
-	var f fastspeed.SpeedTestNet
+	var f SpeedTestNet
 	f = f.Init()
-	dlSpeed := fastspeed.Download(f)
+	dlSpeed := Download(f)
 	if 15.0 > dlSpeed || dlSpeed > 120.0 {
 		t.Fail()
 	}
@@ -21,9 +20,9 @@ func TestSpeedTestNet_Download(t *testing.T) {
 
 func TestSpeedTestNet_Upload(t *testing.T) {
 	t.Logf("testing speedtest.net upload")
-	var f fastspeed.SpeedTestNet
+	var f SpeedTestNet
 	f = f.Init()
-	ulSpeed := fastspeed.Upload(f)
+	ulSpeed := Upload(f)
 	if 15.0 > ulSpeed || ulSpeed > 120.0 {
 		t.Fail()
 	}
@@ -31,9 +30,9 @@ func TestSpeedTestNet_Upload(t *testing.T) {
 
 func TestFastCom_Download(t *testing.T) {
 	t.Logf("testing fast.com download")
-	var f fastspeed.FastCom
+	var f FastCom
 	f = f.Init()
-	dlSpeed := fastspeed.Download(f)
+	dlSpeed := Download(f)
 	if 15.0 > dlSpeed || dlSpeed > 120.0 {
 		t.Fail()
 	}
@@ -41,9 +40,9 @@ func TestFastCom_Download(t *testing.T) {
 
 func TestFastCom_Upload(t *testing.T) {
 	t.Logf("testing fast.com upload")
-	var f fastspeed.FastCom
+	var f FastCom
 	f = f.Init()
-	ulSpeed := fastspeed.Upload(f)
+	ulSpeed := Upload(f)
 	if 15.0 > ulSpeed || ulSpeed > 120.0 {
 		t.Fail()
 	}
@@ -66,7 +65,7 @@ func TestAPIFastCom_GetMeasurments(t *testing.T) {
 			outputs = append(outputs, line)
 		}
 	}()
-	fastspeed.GetMeasurments(fastspeed.FastcomType)
+	GetMeasurments(FastcomType)
 	writer.Close()
 	os.Stdout = old_stdout // restoring the real stdout
 	for _, output := range outputs {
@@ -94,7 +93,7 @@ func TestAPISpeedTestNet_GetMeasurments(t *testing.T) {
 			outputs = append(outputs, line)
 		}
 	}()
-	fastspeed.GetMeasurments(fastspeed.SpeednetType)
+	GetMeasurments(SpeednetType)
 	writer.Close()
 	os.Stdout = old_stdout // restoring the real stdout
 	for _, output := range outputs {
