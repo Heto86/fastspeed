@@ -36,6 +36,6 @@ go test -bench=.
 
 ## Known issues:
 
-1. It looks that the upload for fast.com is not implemented in the library, unfortunately I couldn't find an half decent library except this.
+1. It looks that the upload for fast.com is not implemented in the library.
 1. The print output could be improved.
 1. We could try to add more test servers.
